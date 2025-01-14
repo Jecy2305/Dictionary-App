@@ -11,14 +11,20 @@ function SearchBar({onSearch}) {
     setSearchValue("");
   }
 
+  const handleSearch = ()=>{
+    if (searchValue == "") return null;
+    onSearch(searchValue);
+  }
+
   return (
     <form onSubmit={(e)=>handleSubmit(e)}>
         <label>
             <input type="text"
+            required
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             />
-            <img src={search} alt="search" onClick={()=>handleSubmit()}/>
+            <img src={search} alt="search" onClick={()=> handleSearch()}/>
         </label>
     </form>
   )
