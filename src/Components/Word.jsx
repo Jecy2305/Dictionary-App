@@ -1,13 +1,15 @@
 import React from "react";
 import play from "../assets/images/icon-play.svg";
 
-function Word({data}) {
+function Word({ response }) {
+  if (!response?.meanings?.[0]) return null;
+
   return (
     <div className="container-result-word">
       <div className="container-result-header">
         <div className="container-result-header-texts">
-          <h1>keyboard</h1>
-          <p>/'ki:bc:d/</p>
+          <h1>{response.word}</h1>
+          <p>{response.phonetic}</p>
         </div>
 
         <div className="container-result-header-audio">
@@ -29,25 +31,23 @@ function Word({data}) {
           <p>Mearning</p>
 
           <ul>
-            <li>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
-              possimus ducimus architecto nemo doloremque. Cumque non ad
-              voluptates iusto similique!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis
-              quaerat cum sit quis dolore quae dicta vitae voluptate labore eum?
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis
-              quaerat cum sit quis dolore quae dicta vitae voluptate labore eum?
-            </li>
+            {response.meanings.map((meaning) =>
+              meaning.definitions.map((def, index) => (
+                <li key={index}>{def.definition}</li>
+              ))
+            )}
           </ul>
         </div>
 
         <div className="container-result-noun-footer">
           <p>Synonyms</p>
-          <strong>electronic keyboards</strong>
+          <div className="container-result-noun-footer-synonyms">
+          {
+            response.meanings[0].synonyms.map((synonym, i)=>(
+              <strong key={i}>{synonym}</strong>
+            ))
+          }
+          </div>
         </div>
       </div>
 
@@ -65,7 +65,9 @@ function Word({data}) {
           <ul>
             <li>
               To type on a computer keyboard.
-              <p className="text-example">"keyboarding is the part of this job i hate the most."</p>
+              <p className="text-example">
+                "keyboarding is the part of this job i hate the most."
+              </p>
             </li>
           </ul>
         </div>

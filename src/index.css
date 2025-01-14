@@ -301,3 +301,10 @@ form img{
   flex: 1;
   border: 1px solid hsl(0, 0%, 91%);
 }
+
+.container-result-noun-footer-synonyms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  max-width: 100%;
+}

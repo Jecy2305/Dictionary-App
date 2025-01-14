@@ -1,14 +1,15 @@
-import React from 'react'
-import Header from './Components/Header'
-import Dictionary from './Components/Dictionary'
+import React from "react";
+import Header from "./Components/Header";
+import Dictionary from "./Components/Dictionary";
 
 function App() {
+
   return (
     <>
-      <Header/>
+      <Header />
       <Dictionary/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
