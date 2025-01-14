@@ -143,6 +143,8 @@ form input{
   border: 2px solid hsl(0, 0%, 96%);
   background-color: hsl(0, 0%, 96%);
   outline: none;
+  font-family: 'Inter', system-ui;
+  font-size: 17px;
 }
 
 form input:focus{
