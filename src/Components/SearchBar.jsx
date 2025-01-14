@@ -18,7 +18,7 @@ function SearchBar({onSearch}) {
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             />
-            <img src={search} alt="search"/>
+            <img src={search} alt="search" onClick={()=>handleSubmit()}/>
         </label>
     </form>
   )
