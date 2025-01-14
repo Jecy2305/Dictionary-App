@@ -5,12 +5,12 @@ import { useFetchDictionary } from '../Hooks/useFetchDictionary'
 
 function Dictionary() {
 
-  const {response} = useFetchDictionary();
+  const {response, fetchData} = useFetchDictionary();
   console.log(response)
 
   return (
     <main>
-        <SearchBar/>
+        <SearchBar onSearch={fetchData}/>
         <Word response={response}/>
     </main>
   )

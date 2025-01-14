@@ -1,4 +1,3 @@
-/* 1) Fuentes Inconsolata */
 @font-face {
   font-family: 'Inconsolata';
   src: url('./assets/fonts/inconsolata/static/Inconsolata-Regular.ttf') format('truetype');
@@ -7,49 +6,10 @@
 }
 
 @font-face {
-  font-family: 'Inconsolata';
-  src: url('./assets/fonts/inconsolata/static/Inconsolata-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-/* Si deseas usar la variable */
-@font-face {
-  font-family: 'Inconsolata Variable';
-  src: url('./assets/fonts/inconsolata/static/Inconsolata-VariableFont_wdth,wght.ttf') format('truetype');
-  font-weight: 200 900;
-  font-stretch: 75% 125%; 
-  font-style: normal;
-}
-
-/* 2) Fuentes Inter */
-@font-face {
   font-family: 'Inter';
   src: url('./assets/fonts/inter/static/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('./assets/fonts/inter/static/Inter-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-/* Variable */
-@font-face {
-  font-family: 'Inter Variable';
-  src: url('./assets/fonts/inter/static/Inter-VariableFont_slnt,wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-}
-
-/* 3) Fuentes Lora */
-@font-face {
-  font-family: 'Lora';
-  src: url('./assets/fonts/lora/Lora-Italic-VariableFont_wght.ttf') format('truetype');
-  font-weight: 400;
 }
 
 *{
@@ -266,6 +226,7 @@ form img{
 }
 
 .container-result-noun-body{
+  font-family: 'Inter';
   font-size: 1.1em;
   font-weight: 500;
   color: hsl(0, 0%, 56%);
@@ -293,6 +254,10 @@ form img{
   color: black;
 }
 
+li{
+  list-style: hsl(275, 81%, 60%);
+}
+
 .text-example{
   color: hsl(0, 0%, 56%);
 }
@@ -307,4 +272,10 @@ form img{
   flex-wrap: wrap;
   gap: .5rem;
   max-width: 100%;
+}
+
+.container-result-verb-footer-source-link{
+  flex: 1;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }

@@ -1,7 +1,10 @@
 import React from "react";
 import play from "../assets/images/icon-play.svg";
+import { useAudio } from "../Hooks/useAudio";
 
-function Word({ response }) {
+const Word = ({ response }) => {
+  
+  const { isPlaying, handlePlay, hasAudio } = useAudio(response);
   if (!response?.meanings?.[0]) return null;
 
   return (
@@ -12,11 +15,17 @@ function Word({ response }) {
           <p>{response.phonetic}</p>
         </div>
 
-        <div className="container-result-header-audio">
-          <button>
-            <img src={play} alt="play" />
-          </button>
-        </div>
+        {hasAudio && (
+          <div className="container-result-header-audio">
+            <button 
+              onClick={handlePlay}
+              className={isPlaying ? 'playing' : ''}
+              disabled={isPlaying}
+            >
+              <img src={play} alt="play" />
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="container-result-noun">
@@ -28,61 +37,64 @@ function Word({ response }) {
         </div>
 
         <div className="container-result-noun-body">
-          <p>Mearning</p>
-
+          <p>Meaning</p>
           <ul>
-            {response.meanings.map((meaning) =>
-              meaning.definitions.map((def, index) => (
-                <li key={index}>{def.definition}</li>
-              ))
-            )}
+            {response.meanings[0].definitions.map((def, i) => (
+              <li key={i}>{def.definition}</li>
+            ))}
           </ul>
         </div>
 
-        <div className="container-result-noun-footer">
-          <p>Synonyms</p>
-          <div className="container-result-noun-footer-synonyms">
-          {
-            response.meanings[0].synonyms.map((synonym, i)=>(
-              <strong key={i}>{synonym}</strong>
-            ))
-          }
+        {response.meanings[0].synonyms.length > 0 && (
+          <div className="container-result-noun-footer">
+            <p>Synonyms</p>
+            <div className="container-result-noun-footer-synonyms">
+              {response.meanings[0].synonyms.map((synonym, i) => (
+                <strong key={i}>{synonym}</strong>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
-      <div className="container-result-verb">
-        <div className="container-result-noun-header">
-          <h2>
-            <strong>verb</strong>
-          </h2>
-          <div className="container-result-noun-line"></div>
-        </div>
+      {response.meanings[1] && (
+        <div className="container-result-verb">
+          <div className="container-result-noun-header">
+            <h2>
+              <strong>verb</strong>
+            </h2>
+            <div className="container-result-noun-line"></div>
+          </div>
 
-        <div className="container-result-noun-body">
-          <p>Mearning</p>
+          <div className="container-result-noun-body">
+            <p>Meaning</p>
+            <ul>
+              {response.meanings[1].definitions.map((def, i) => (
+                <li key={i}>
+                  {def.definition}
+                  {def.example && (
+                    <p className="text-example">"{def.example}"</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <ul>
-            <li>
-              To type on a computer keyboard.
-              <p className="text-example">
-                "keyboarding is the part of this job i hate the most."
-              </p>
-            </li>
-          </ul>
-        </div>
-
-        <div className="container-result-verb-footer">
-          <div className="container-result-verb-footer-line"></div>
-
-          <div className="container-result-verb-footer-source">
-            <p>Source</p>
-            <a href="#">hhtps://en.wikitionary.otg/wiki</a>
+          <div className="container-result-verb-footer">
+            <div className="container-result-verb-footer-line"></div>
+            <div className="container-result-verb-footer-source">
+              <p>Source</p>
+              <div className="container-result-verb-footer-source-link">
+                <a href={response.sourceUrls[0]} target="_blank" rel="noopener noreferrer">
+                  {response.sourceUrls[0]}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
-}
+};
 
 export default Word;

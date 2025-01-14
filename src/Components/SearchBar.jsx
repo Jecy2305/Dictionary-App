@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import search from '../assets/images/icon-search.svg'
 
-function SearchBar() {
+function SearchBar({onSearch}) {
 
   const [searchValue, setSearchValue] = useState("");
-  
 
   const handleSubmit = (e)=>{
+    onSearch(searchValue)
     e.preventDefault();
     setSearchValue("");
   }

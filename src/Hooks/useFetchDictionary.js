@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-export const useFetchDictionary = (word = "play") => {
+export const useFetchDictionary = () => {
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchData = async () => {
+  const fetchData = async (word = "dictionary") => {
     setLoading(true);
     setError(null);
 
@@ -24,10 +24,8 @@ export const useFetchDictionary = (word = "play") => {
   };
 
   useEffect(() => {
-    if (word) {
-      fetchData();
-    }
-  }, [word]);
+    fetchData();
+  }, []);
 
   return { response, loading, error, fetchData };
 };
