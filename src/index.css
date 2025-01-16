@@ -227,11 +227,9 @@ form img{
   border: 1px solid hsl(0, 0%, 91%);
 }
 
-.container-result-noun-body{
-  font-family: 'Inter';
+.container-result-noun-body li{
+  font-family: 'Inter', sans-serif;
   font-size: 1.1em;
-  font-weight: 500;
-  color: hsl(0, 0%, 56%);
 }
 
 .container-result-noun-footer p{
